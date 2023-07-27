@@ -1,8 +1,19 @@
-# React + Vite
+# Macro Calculator 🥗
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This little pet-projects's goal is to test the functionality of [Bulma](https://bulma.io/) – my recent discovery in terms of CSS frameworks.
 
-Currently, two official plugins are available:
+## The calculator
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### About app
+
+This minimalist app helps to estimate the optimal distribution of macronutrients a person should consume daily based on their specific health and fitness goals.
+
+### Made with
+
+- React.js
+- Bulma
+- Vite.js
+
+### Important ⚠️
+
+Please keep in mind that a macro calculator provides only an **estimate**, and individual variations, medical conditions, and other factors may require personalized adjustments. Therefore, it's always a good idea to consult with a registered dietitian or nutritionist for a more detailed and tailored nutrition plan based on specific needs and goals.

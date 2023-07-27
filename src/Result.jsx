@@ -1,10 +1,15 @@
 export default function Result() {
     return (
         <>
-            <div className="notification">
-                <h2 className="title is-5 has-text-grey-darker">Here is your result:</h2>
+            <div className="notification has-text-centered mt-6">
+                <h2 className="title is-5 has-text-grey-darker">
+                    You have to consume
+                </h2>
+                <h2 className="title is-3 has-text-black-ter">
+                    <span className="has-text-weight-bold">1600</span> kkal
+                </h2>
                 <div className="content">
-                    <table className="has-text-centered">
+                    <table>
                         <thead>
                             <tr>
                                 <th>Macros</th>

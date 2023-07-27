@@ -5,7 +5,7 @@ function App() {
     <section className="hero is-fullheight">
       <div className="container center">
 
-        <form className="notification card m-2">
+        <form className="notification card my-2">
 
           <h1 className="title is-4 mb-5 has-text-grey-darker">Please fill in your data:</h1>
 
