@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .vertical {
@@ -13,10 +14,18 @@
     margin-left: 0 !important;
 }
 
-label.radio:not(:last-child) {
+label.radio {
+    padding: 0 10px 0 0;
+}
+
+.vertical label.radio:not(:last-child) {
     padding: 0 0 10px;
 }
 
 label.radio input {
     margin-right: 6px;
+}
+
+.container {
+    max-width: 552px !important;
 }

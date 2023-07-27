@@ -1,18 +1,23 @@
+import Result from "./Result"
+
 function App() {
   return (
     <section className="hero is-fullheight">
       <div className="container center">
 
-        <form className="notification card">
-          
-          <h1 className="title is-4 mb-5">Please fill in your data:</h1>
+        <form className="notification card m-2">
+
+          <h1 className="title is-4 mb-5 has-text-grey-darker">Please fill in your data:</h1>
 
           <div className="columns">
             <div className="column">
               <div className="field">
                 <label className="label" for="age">Age</label>
-                <div className="control">
+                <div className="control has-icons-left">
                   <input id="age" className="input" type="number" placeholder="Your age" />
+                  <span className="icon is-small is-left">
+                    <i className="fa-solid fa-cake-candles"></i>
+                  </span>
                 </div>
               </div>
             </div>
@@ -113,11 +118,14 @@ function App() {
 
           <div className="field">
             <div className="control">
-              <button className="button is-link mb-2">See results</button>
+              <button className="button is-link mb-2">Calculate macros</button>
             </div>
           </div>
 
+          <Result />
+
         </form>
+        
 
       </div>
     </section>
