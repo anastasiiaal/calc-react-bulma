@@ -6,7 +6,7 @@ export default function Result() {
                     You have to consume
                 </h2>
                 <h2 className="title is-3 has-text-black-ter">
-                    <span className="has-text-weight-bold">1600</span> kkal
+                    <span className="has-text-weight-bold">1600</span> kcal
                 </h2>
                 <div className="content">
                     <table>
