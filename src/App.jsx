@@ -69,6 +69,10 @@ function App() {
                     <input 
                       type="radio" 
                       name="sex" 
+                      id="male"
+                      value="male"
+                      onChange={handleChange}
+                      checked={form.sex === "male"}
                     />
                     Male
                   </label>
@@ -76,6 +80,10 @@ function App() {
                     <input 
                       type="radio" 
                       name="sex" 
+                      id="female"
+                      value="female"
+                      onChange={handleChange}
+                      checked={form.sex === "female"}
                     />
                     Female
                   </label>
@@ -94,6 +102,9 @@ function App() {
                     className="input" 
                     type="number" 
                     placeholder="Your weight in kg" 
+                    value={form.weight}
+                    name="weight"
+                    onChange={handleChange}
                   />
                   <span className="icon is-small is-left">
                     <i className="fa-solid fa-weight-scale"></i>
@@ -111,6 +122,9 @@ function App() {
                     className="input" 
                     type="number" 
                     placeholder="Your height in cm" 
+                    value={form.height}
+                    name="height"
+                    onChange={handleChange}
                   />
                   <span className="icon is-small is-left">
                     <i className="fa-solid fa-up-down"></i>
@@ -130,6 +144,10 @@ function App() {
                       <input 
                         type="radio" 
                         name="activity" 
+                        id="a-1"
+                        value="a-1"
+                        onChange={handleChange}
+                        checked={form.activity === "a-1"}
                       />
                       Sedentary: little or no excercise
                     </label>
@@ -137,6 +155,10 @@ function App() {
                       <input 
                         type="radio" 
                         name="activity" 
+                        id="a-2"
+                        value="a-2"
+                        onChange={handleChange}
+                        checked={form.activity === "a-2"}
                       />
                       Light: exercise 1-3 times/week
                     </label>
@@ -144,6 +166,10 @@ function App() {
                       <input 
                         type="radio" 
                         name="activity" 
+                        id="a-3"
+                        value="a-3"
+                        onChange={handleChange}
+                        checked={form.activity === "a-3"}
                       />
                       Moderate: exercise 4-6 times/week
                     </label>
@@ -151,6 +177,10 @@ function App() {
                       <input 
                         type="radio" 
                         name="activity" 
+                        id="a-4"
+                        value="a-4"
+                        onChange={handleChange}
+                        checked={form.activity === "a-4"}
                       />
                       Intense: exercise 7+ times/week
                     </label>
@@ -170,6 +200,10 @@ function App() {
                       <input 
                         type="radio" 
                         name="goal" 
+                        id="g-1"
+                        value="g-1"
+                        onChange={handleChange}
+                        checked={form.goal === "g-1"}
                       />
                       Lose weight
                     </label>
@@ -177,6 +211,10 @@ function App() {
                       <input 
                         type="radio" 
                         name="goal" 
+                        id="g-2"
+                        value="g-2"
+                        onChange={handleChange}
+                        checked={form.goal === "g-2"}
                       />
                       Maintain weight
                     </label>
@@ -184,6 +222,10 @@ function App() {
                       <input 
                         type="radio" 
                         name="goal" 
+                        id="g-3"
+                        value="g-3"
+                        onChange={handleChange}
+                        checked={form.goal === "g-3"}
                       />
                       Gain weight
                     </label>
