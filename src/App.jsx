@@ -1,4 +1,5 @@
 import { useState } from "react";
+import calculate from "./calculate";
 
 import Result from "./Result"
 
@@ -14,6 +15,12 @@ function App() {
   })
 
   const [showResult, setShowResult] = useState(false)
+  const [result, setResult] = useState({
+    kcal: "",
+    protein: "",
+    fats: "",
+    carbs: ""
+  })
 
   function handleChange (event) {
     const {name, value} = event.target
@@ -23,14 +30,19 @@ function App() {
         [name]: value
       }
     })
-
-    console.log(form);
   }
 
   function calculateMacros (event) {
     event.preventDefault()
 
     setShowResult(prevResult => !prevResult)
+
+    setResult(prevResult => {
+      return {
+        ...prevResult,
+        kcal: calculate(form)
+      }
+    })
   }
 
   return (
@@ -144,10 +156,10 @@ function App() {
                       <input 
                         type="radio" 
                         name="activity" 
-                        id="a-1"
-                        value="a-1"
+                        id="1.2"
+                        value="1.2"
                         onChange={handleChange}
-                        checked={form.activity === "a-1"}
+                        checked={form.activity === "1.2"}
                       />
                       Sedentary: little or no excercise
                     </label>
@@ -155,10 +167,10 @@ function App() {
                       <input 
                         type="radio" 
                         name="activity" 
-                        id="a-2"
-                        value="a-2"
+                        id="1.375"
+                        value="1.375"
                         onChange={handleChange}
-                        checked={form.activity === "a-2"}
+                        checked={form.activity === "1.375"}
                       />
                       Light: exercise 1-3 times/week
                     </label>
@@ -166,23 +178,34 @@ function App() {
                       <input 
                         type="radio" 
                         name="activity" 
-                        id="a-3"
-                        value="a-3"
+                        id="1.55"
+                        value="1.55"
                         onChange={handleChange}
-                        checked={form.activity === "a-3"}
+                        checked={form.activity === "1.55"}
                       />
-                      Moderate: exercise 4-6 times/week
+                      Moderate: exercise 3-5 times/week
                     </label>
                     <label className="radio">
                       <input 
                         type="radio" 
                         name="activity" 
-                        id="a-4"
-                        value="a-4"
+                        id="1.725"
+                        value="1.725"
                         onChange={handleChange}
-                        checked={form.activity === "a-4"}
+                        checked={form.activity === "1.725"}
                       />
-                      Intense: exercise 7+ times/week
+                      Intense: exercise 6-7 times/week
+                    </label>
+                    <label className="radio">
+                      <input 
+                        type="radio" 
+                        name="activity" 
+                        id="1.9"
+                        value="1.9"
+                        onChange={handleChange}
+                        checked={form.activity === "1.9"}
+                      />
+                      Extreme: hard trainings 7+ times/week
                     </label>
                   </div>
                 </div>
@@ -241,11 +264,10 @@ function App() {
             </div>
           </div>
 
-          {showResult && <Result />}
+          {showResult && <Result kcal={result.kcal} />}
 
         </form>
         
-
       </div>
     </section>
   )
