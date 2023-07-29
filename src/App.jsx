@@ -1,5 +1,13 @@
 import { useState } from "react";
 import calculate from "./calculate";
+import { 
+  checkValidAge, 
+  checkValidHeight, 
+  checkValidWeight, 
+  checkValidSex,
+  checkValidActivity,
+  checkValidGoal 
+} from "./valid";
 
 import Result from "./Result"
 
@@ -13,15 +21,6 @@ function App() {
     activity: "",
     goal: ""
   })
-
-  if (form.age != "",
-    form.sex != "",
-    form.weight != "",
-    form.height != "",
-    form.activity != "",
-    form.goal != "") {
-    console.log("all filled");
-  }
 
   const [showResult, setShowResult] = useState(false)
   const [result, setResult] = useState({
@@ -44,14 +43,24 @@ function App() {
   function calculateMacros(event) {
     event.preventDefault()
 
-    setShowResult(prevResult => !prevResult)
-
-    setResult({
-      kcal: calculate(form).total,
-      protein: calculate(form).protein,
-      fats: calculate(form).fats,
-      carbs: calculate(form).carbs
-    })
+    if (
+      checkValidAge(form.age),
+      checkValidHeight(form.height), 
+      checkValidWeight(form.weight), 
+      checkValidSex(form.sex),
+      checkValidActivity(form.activity),
+      checkValidGoal(form.goal)
+    ) {
+      setResult({
+        kcal: calculate(form).total,
+        protein: calculate(form).protein,
+        fats: calculate(form).fats,
+        carbs: calculate(form).carbs
+      })
+      setShowResult(true)
+    } else {
+      setShowResult(false)
+    }
   }
 
   return (
