@@ -14,6 +14,15 @@ function App() {
     goal: ""
   })
 
+  if (form.age != "",
+    form.sex != "",
+    form.weight != "",
+    form.height != "",
+    form.activity != "",
+    form.goal != "") {
+    console.log("all filled");
+  }
+
   const [showResult, setShowResult] = useState(false)
   const [result, setResult] = useState({
     kcal: "",
@@ -22,8 +31,8 @@ function App() {
     carbs: ""
   })
 
-  function handleChange (event) {
-    const {name, value} = event.target
+  function handleChange(event) {
+    const { name, value } = event.target
     setForm(prevFormData => {
       return {
         ...prevFormData,
@@ -32,16 +41,16 @@ function App() {
     })
   }
 
-  function calculateMacros (event) {
+  function calculateMacros(event) {
     event.preventDefault()
 
     setShowResult(prevResult => !prevResult)
 
-    setResult(prevResult => {
-      return {
-        ...prevResult,
-        kcal: calculate(form)
-      }
+    setResult({
+      kcal: calculate(form).total,
+      protein: calculate(form).protein,
+      fats: calculate(form).fats,
+      carbs: calculate(form).carbs
     })
   }
 
@@ -58,11 +67,11 @@ function App() {
               <div className="field">
                 <label className="label" for="age">Age</label>
                 <div className="control has-icons-left">
-                  <input 
-                    id="age" 
-                    className="input" 
-                    type="number" 
-                    placeholder="Your age" 
+                  <input
+                    id="age"
+                    className="input"
+                    type="number"
+                    placeholder="Your age"
                     value={form.age}
                     name="age"
                     onChange={handleChange}
@@ -78,9 +87,9 @@ function App() {
                 <div className="control">
                   <label className="label">Biological sex</label>
                   <label className="radio">
-                    <input 
-                      type="radio" 
-                      name="sex" 
+                    <input
+                      type="radio"
+                      name="sex"
                       id="male"
                       value="male"
                       onChange={handleChange}
@@ -89,9 +98,9 @@ function App() {
                     Male
                   </label>
                   <label className="radio">
-                    <input 
-                      type="radio" 
-                      name="sex" 
+                    <input
+                      type="radio"
+                      name="sex"
                       id="female"
                       value="female"
                       onChange={handleChange}
@@ -109,11 +118,11 @@ function App() {
               <div className="field">
                 <label className="label" for="weight">Weight</label>
                 <div className="control has-icons-left">
-                  <input 
-                    id="weight" 
-                    className="input" 
-                    type="number" 
-                    placeholder="Your weight in kg" 
+                  <input
+                    id="weight"
+                    className="input"
+                    type="number"
+                    placeholder="Your weight in kg"
                     value={form.weight}
                     name="weight"
                     onChange={handleChange}
@@ -129,11 +138,11 @@ function App() {
               <div className="field">
                 <label className="label" for="height">Height</label>
                 <div className="control has-icons-left">
-                  <input 
-                    id="height" 
-                    className="input" 
-                    type="number" 
-                    placeholder="Your height in cm" 
+                  <input
+                    id="height"
+                    className="input"
+                    type="number"
+                    placeholder="Your height in cm"
                     value={form.height}
                     name="height"
                     onChange={handleChange}
@@ -153,9 +162,9 @@ function App() {
                   <label className="label">Weekly activity</label>
                   <div className="vertical">
                     <label className="radio">
-                      <input 
-                        type="radio" 
-                        name="activity" 
+                      <input
+                        type="radio"
+                        name="activity"
                         id="1.2"
                         value="1.2"
                         onChange={handleChange}
@@ -164,9 +173,9 @@ function App() {
                       Sedentary: little or no excercise
                     </label>
                     <label className="radio">
-                      <input 
-                        type="radio" 
-                        name="activity" 
+                      <input
+                        type="radio"
+                        name="activity"
                         id="1.375"
                         value="1.375"
                         onChange={handleChange}
@@ -175,9 +184,9 @@ function App() {
                       Light: exercise 1-3 times/week
                     </label>
                     <label className="radio">
-                      <input 
-                        type="radio" 
-                        name="activity" 
+                      <input
+                        type="radio"
+                        name="activity"
                         id="1.55"
                         value="1.55"
                         onChange={handleChange}
@@ -186,9 +195,9 @@ function App() {
                       Moderate: exercise 3-5 times/week
                     </label>
                     <label className="radio">
-                      <input 
-                        type="radio" 
-                        name="activity" 
+                      <input
+                        type="radio"
+                        name="activity"
                         id="1.725"
                         value="1.725"
                         onChange={handleChange}
@@ -197,9 +206,9 @@ function App() {
                       Intense: exercise 6-7 times/week
                     </label>
                     <label className="radio">
-                      <input 
-                        type="radio" 
-                        name="activity" 
+                      <input
+                        type="radio"
+                        name="activity"
                         id="1.9"
                         value="1.9"
                         onChange={handleChange}
@@ -220,9 +229,9 @@ function App() {
                   <label className="label">Your goal is to..</label>
                   <div className="vertical">
                     <label className="radio">
-                      <input 
-                        type="radio" 
-                        name="goal" 
+                      <input
+                        type="radio"
+                        name="goal"
                         id="g-1"
                         value="g-1"
                         onChange={handleChange}
@@ -231,9 +240,9 @@ function App() {
                       Lose weight
                     </label>
                     <label className="radio">
-                      <input 
-                        type="radio" 
-                        name="goal" 
+                      <input
+                        type="radio"
+                        name="goal"
                         id="g-2"
                         value="g-2"
                         onChange={handleChange}
@@ -242,9 +251,9 @@ function App() {
                       Maintain weight
                     </label>
                     <label className="radio">
-                      <input 
-                        type="radio" 
-                        name="goal" 
+                      <input
+                        type="radio"
+                        name="goal"
                         id="g-3"
                         value="g-3"
                         onChange={handleChange}
@@ -260,14 +269,16 @@ function App() {
 
           <div className="field">
             <div className="control">
-              <button onClick={calculateMacros} className="button is-link mb-2">Calculate macros</button>
+              <button onClick={calculateMacros} className="button is-link mb-2">
+                Calculate macros
+              </button>
             </div>
           </div>
 
-          {showResult && <Result kcal={result.kcal} />}
+          {showResult && <Result result={result} />}
 
         </form>
-        
+
       </div>
     </section>
   )

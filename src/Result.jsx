@@ -1,5 +1,4 @@
-export default function Result({kcal}) {
-    console.log(kcal);
+export default function Result({result}) {
     return (
         <>
             <div className="notification has-text-centered mt-6">
@@ -7,7 +6,7 @@ export default function Result({kcal}) {
                     You have to consume
                 </h2>
                 <h2 className="title is-3 has-text-black-ter">
-                    <span className="has-text-weight-bold">{kcal}</span> kcal
+                    <span className="has-text-weight-bold">{result.kcal}</span> kcal
                 </h2>
                 <div className="content">
                     <table>
@@ -21,17 +20,17 @@ export default function Result({kcal}) {
                         <tbody>
                             <tr>
                                 <td>Carbs</td>
-                                <td>150 g</td>
+                                <td>{result.carbs} g</td>
                                 <td>50%</td>
                             </tr>
                             <tr>
                                 <td>Fats</td>
-                                <td>50 g</td>
+                                <td>{result.fats} g</td>
                                 <td>30%</td>
                             </tr>
                             <tr>
                                 <td>Protein</td>
-                                <td>90 g</td>
+                                <td>{result.protein} g</td>
                                 <td>20%</td>
                             </tr>
 
