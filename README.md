@@ -10,9 +10,14 @@ This minimalist app helps to estimate the optimal distribution of macronutrients
 
 ### Made with
 
-- React.js
-- Bulma
+- [React.js](https://react.dev/)
+- [Bulma components library](https://bulma.io/)
 - Vite.js
+- ChatGPT & Google (to make sure my calculations make sense)
+
+### Result
+
+[Click here](https://main--chipper-pothos-fca41b.netlify.app/) to see the final result and play around.
 
 ### Important ⚠️
 
