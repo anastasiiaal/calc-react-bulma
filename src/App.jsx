@@ -13,6 +13,7 @@ import Result from "./Result"
 
 function App() {
 
+  // this state maintains all user data provided/selected
   const [form, setForm] = useState({
     age: "",
     sex: "",
@@ -22,7 +23,17 @@ function App() {
     goal: ""
   })
 
+  // state maintaining the fact that age, height, weight are valid
+  // to show/hide help messages
+  const [validity, setValidity] = useState({
+    nonValidAge: false,
+    nonValidHeight: false,
+    nonValidWeight: false
+  })
+
+  // state of displayed/hidden result panel
   const [showResult, setShowResult] = useState(false)
+  // result of calculations
   const [result, setResult] = useState({
     kcal: "",
     protein: "",
@@ -30,8 +41,10 @@ function App() {
     carbs: ""
   })
 
+  // handling of input changes
   function handleChange(event) {
     const { name, value } = event.target
+    
     setForm(prevFormData => {
       return {
         ...prevFormData,
@@ -39,29 +52,93 @@ function App() {
       }
     })
   }
-
+  
   function calculateMacros(event) {
     event.preventDefault()
 
+    // checking if inputs filled in correctly
     if (
-      checkValidAge(form.age),
-      checkValidHeight(form.height), 
-      checkValidWeight(form.weight), 
-      checkValidSex(form.sex),
-      checkValidActivity(form.activity),
+      checkValidAge(form.age) &&
+      checkValidHeight(form.height) && 
+      checkValidWeight(form.weight) && 
+      checkValidSex(form.sex) &&
+      checkValidActivity(form.activity) &&
       checkValidGoal(form.goal)
     ) {
+      // if yes, set the result of macros calculations to show later
       setResult({
         kcal: calculate(form).total,
         protein: calculate(form).protein,
         fats: calculate(form).fats,
         carbs: calculate(form).carbs
       })
+      // make sure all help messages are hidden
+      setValidity({
+        nonValidAge: false,
+        nonValidHeight: false,
+        nonValidWeight: false
+      })
+      // show the result panel
       setShowResult(true)
     } else {
+      // here's what happens when inputs not validated:
+
+      // macros results will remain/get hidden
       setShowResult(false)
+
+      // if age is incorrect => show helping message, otherwise hide
+      if (checkValidAge(form.age) === false) {
+        setValidity(prevValidity => {
+          return {
+            ...prevValidity,
+            nonValidAge: true
+          }
+        })
+      } else {
+        setValidity(prevValidity => {
+          return {
+            ...prevValidity,
+            nonValidAge: false
+          }
+        })
+      }
+
+      // if weight is incorrect => show helping message, otherwise hide
+      if (checkValidWeight(form.weight) === false) {
+        setValidity(prevValidity => {
+          return {
+            ...prevValidity,
+            nonValidWeight: true
+          }
+        })
+      } else {
+        setValidity(prevValidity => {
+          return {
+            ...prevValidity,
+            nonValidWeight: false
+          }
+        })
+      }
+
+      // if height is incorrect => show helping message, otherwise hide
+      if (checkValidHeight(form.height) === false) {
+        setValidity(prevValidity => {
+          return {
+            ...prevValidity,
+            nonValidHeight: true
+          }
+        })
+      } else {
+        setValidity(prevValidity => {
+          return {
+            ...prevValidity,
+            nonValidHeight: false
+          }
+        })
+      }
     }
   }
+
 
   return (
     <section className="hero is-fullheight">
@@ -74,7 +151,7 @@ function App() {
           <div className="columns">
             <div className="column">
               <div className="field">
-                <label className="label" for="age">Age</label>
+                <label className="label" htmlFor="age">Age</label>
                 <div className="control has-icons-left">
                   <input
                     id="age"
@@ -89,6 +166,7 @@ function App() {
                     <i className="fa-solid fa-cake-candles"></i>
                   </span>
                 </div>
+                {validity.nonValidAge && <p className="help is-danger">Should be your real age</p>}
               </div>
             </div>
             <div className="column">
@@ -125,7 +203,7 @@ function App() {
           <div className="columns">
             <div className="column">
               <div className="field">
-                <label className="label" for="weight">Weight</label>
+                <label className="label" htmlFor="weight">Weight</label>
                 <div className="control has-icons-left">
                   <input
                     id="weight"
@@ -140,12 +218,13 @@ function App() {
                     <i className="fa-solid fa-weight-scale"></i>
                   </span>
                 </div>
+                {validity.nonValidWeight && <p className="help is-danger">Should be your real weight</p>}
               </div>
             </div>
 
             <div className="column">
               <div className="field">
-                <label className="label" for="height">Height</label>
+                <label className="label" htmlFor="height">Height</label>
                 <div className="control has-icons-left">
                   <input
                     id="height"
@@ -160,6 +239,7 @@ function App() {
                     <i className="fa-solid fa-up-down"></i>
                   </span>
                 </div>
+                {validity.nonValidHeight && <p className="help is-danger">Should be your real height</p>}
               </div>
             </div>
           </div>

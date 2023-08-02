@@ -1,5 +1,5 @@
 export function checkValidAge (age) {
-    if (age > 1 && age < 120) {
+    if (age > 10 && age < 120) {
         return true
     }
     return false
